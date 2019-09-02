@@ -46,4 +46,5 @@ Les WS proposent deux formats de sortie à renseigner dans le header `Content-Ty
 #### Et concrètement ?
 1. Création d'un compte : `POST /api/users`
 1. Récupération d'un token : `POST /authentication_token`
+1. Créez un profil pour votre utilisateur : `POST /api/users/profile`
 1. Appeler les autres WS avec le header `Authorization: Bearer {{token}}` (Attention ! Ne pas oublier de renseigner ce header via le bouton "Authorize" pour pouvoir utiliser la fonction "Try out" de la documentation)
