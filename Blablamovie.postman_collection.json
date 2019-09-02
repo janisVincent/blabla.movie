@@ -1,0 +1,372 @@
+{
+	"info": {
+		"_postman_id": "77d20ba0-db3b-4af7-a772-4a1c076d36e4",
+		"name": "BlaBlaMovie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/movies",
+			"item": [
+				{
+					"name": "{{host}}movies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}api/movies?term=Fight",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "term",
+									"value": "Fight"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{host}}movies/{imdbId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}api/movies/tt0137523",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"movies",
+								"tt0137523"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{host}}movies/{imdbId}/users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}api/movies/tt0137523/users",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"movies",
+								"tt0137523",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{host}}movies/ranking",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}api/movies/ranking",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"movies",
+								"ranking"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/users",
+			"item": [
+				{
+					"name": "{{host}}users",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"janisvincent@gmail.com\",\r\n  \"password\": \"password\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}api/users",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/users/movies",
+			"item": [
+				{
+					"name": "{{host}}users/movies",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"imdbId\": \"tt2495118\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}api/users/movies",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"users",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{host}}users/movies",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/users/movies",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"users",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{host}}users/movies/{imdbId}",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}api/users/movies/11",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"users",
+								"movies",
+								"11"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/users/profile",
+			"item": [
+				{
+					"name": "{{host}}users/profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"alias\": \"I'm batman\",\r\n  \"birthDate\": \"2018-01-31\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}api/users/profile",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{host}}users/profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{host}}api/users/profile",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "{{host}}users/profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"birthDate\": \"2017-10-18\",\r\n  \"alias\": \"Menelas\"\r\n}"
+						},
+						"url": {
+							"raw": "{{host}}api/users/profile",
+							"host": [
+								"{{host}}api"
+							],
+							"path": [
+								"users",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "{{host}}authentication_token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"email@foo.com\",\n\t\"password\": \"password\"\n}"
+				},
+				"url": {
+					"raw": "{{host}}authentication_token",
+					"host": [
+						"{{host}}authentication_token"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1Njc0NTM1MzksImV4cCI6MTU2NzgxMzUzOSwicm9sZXMiOltdLCJ1c2VybmFtZSI6ImphbmlzdmluY2VudEBnbWFpbC5jb20ifQ.jjrFWHRrvW_CQBByCvSuDhGG8kFrsBLCSIINLHq3ggHLAlfooGGgenmc8hvkzHC3fdKS_XI-2k1Pkx7jsUSMYHONUyojWrcx9GwvWho-9UdfghvMvxV6Y9uShxFby84ShSZZXVeittflcPjGHnSArwkmLmvXRP-oiF_bjWtXhPmsX3YXpHPjVNU4YQ0CQoVaOpGwAGwz4zBvNvNLkHKWfyWQ7aT36vxRpp7PrbNbALV7kzZzIU4GaL5NheMdy6QfzgpObzICMsq9gFysQtitIC1pNBsG6F0edT0P1SeSDyI3-sFiOH0shgKf9BZVY_iLPD9eZkTV5iyo5r0PjN3LGNyCLBRdmk0DEgB2u6JMV6sVgwLpbx31AeTesgv3dDeRcvlnpmwSFClba4jBzY59ZoXzKdAnKT4goFwR0PtEluzxO1c3UY-aFRithgNgx0qPjZhgYWG8KfNYVsy3k30hi70qYWxEsX0J7XHv-Jc-OesCK0_thYmWjEi6neD7gQtXxQwZ3JNvOEtZLx9FYDxvC4_0LWCpmW7J31ff_tL2KaIeaF4af5QIA3fsEpovasPNsN4tyT-UodGpCfSmacA7FGGPTdZQQmnsmyauMfTcPL4X-1jZ9j8AbVHD23rKqMVaCIQKK_H5ZLE45QEFCPd0bt_PH3E9jcbVhdHzY38xLQg\"",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "02cf8ce8-8eaa-4c89-8665-759ebd70e81d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "70d12aa1-6910-4b9d-a2e7-b6d306ce8e89",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,107 @@
+resources:
+    App\Entity\User:
+        collectionOperations:
+            post:
+                path: '/users'
+                swagger_context:
+                    summary: Create a new user
+                    tags: ['Users']
+                controller: App\Controller\CreateUserController
+                input: App\Dto\In\UserDto
+                output: App\Dto\Out\UserDto
+        itemOperations:
+            get: []
+    App\Entity\Movie:
+        collectionOperations:
+            get:
+                path: '/movies'
+                swagger_context:
+                    summary: Search within movie database
+                    tags: ['Movies']
+                    parameters:
+                        -   name: term
+                            in: query
+                            description: 'Movie title to search for'
+                            required: true
+                            type: string
+                controller: App\Controller\ListMoviesController
+                output: App\Dto\Out\MovieDto
+            get_ranking:
+                method: GET
+                path: '/movies/ranking'
+                swagger_context:
+                    summary: List movies by votes descending
+                    tags: ['Movies']
+                output: App\Dto\Out\MovieDto
+        itemOperations:
+            get:
+                path: '/movies/{id}'
+                swagger_context:
+                    summary: Get movie details
+                    tags: ['Movies']
+                output: App\Dto\Out\MovieDto
+            get_users:
+                method: GET
+                path: '/movies/{id}/users'
+                swagger_context:
+                    summary: List movie votes
+                    tags: ['Movies']
+                controller: App\Controller\ListMovieUsersController
+                output: App\Dto\Out\UserProfileDto
+    App\Entity\UserProfile:
+        collectionOperations:
+            post:
+                path: '/users/profile'
+                swagger_context:
+                    summary: Create current user profile
+                    tags: ['User profile']
+                controller: App\Controller\CreateUserProfileController
+                input: App\Dto\In\UserProfileDto
+                output: App\Dto\Out\UserProfileDto
+                denormalization_context:
+                    datetime_format: 'Y-m-d'
+        itemOperations:
+            put:
+                path: '/users/profile'
+                swagger_context:
+                    summary: Update current user profile
+                    tags: ['User profile']
+                    parameters: []
+                input: App\Dto\In\UserProfileDto
+                output: App\Dto\Out\UserProfileDto
+                denormalization_context:
+                    datetime_format: 'Y-m-d'
+            get:
+                path: '/users/profile'
+                swagger_context:
+                    summary: Retrieve current user profile
+                    tags: ['User profile']
+                    parameters: []
+                output: App\Dto\Out\UserProfileDto
+    App\Entity\UserMovie:
+        attributes:
+        collectionOperations:
+            get:
+                path: '/users/movies'
+                swagger_context:
+                    summary: List current user movies
+                    tags: ['User movies']
+                pagination_enabled: false
+                output: App\Dto\Out\UserMovieDto
+            post:
+                path: '/users/movies'
+                swagger_context:
+                    summary: Vote for a movie
+                    tags: ['User movies']
+                controller: App\Controller\CreateUserMovieController
+                input: App\Dto\In\UserMovieDto
+                output: App\Dto\Out\UserMovieDto
+        itemOperations:
+            delete:
+                path: '/users/movies/{id}'
+                requirements:
+                    id: '\d+'
+                swagger_context:
+                    summary: Unvote for a movie
+                    tags: ['User movies']
+            get: []

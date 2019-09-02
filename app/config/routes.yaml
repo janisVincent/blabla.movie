@@ -1,0 +1,10 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+authentication_token:
+    path: /authentication_token
+    methods: ['POST']
+get_movie_users:
+    path: /api/movies/{id}/users
+    methods: ['GET']
+    controller: App\Controller\MovieController::getUsers
